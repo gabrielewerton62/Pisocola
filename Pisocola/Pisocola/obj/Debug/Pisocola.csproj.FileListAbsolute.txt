@@ -1,0 +1,16 @@
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\bin\Debug\Pisocola.exe.config
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\bin\Debug\Pisocola.exe
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\bin\Debug\Pisocola.pdb
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.csprojAssemblyReference.cache
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.Frm_Initial_Menu.resources
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.Properties.Resources.resources
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.csproj.GenerateResource.cache
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.csproj.CoreCompileInputs.cache
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.exe
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.pdb
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\bin\Debug\MySql.Data.dll
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\bin\Debug\Google.Protobuf.dll
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\bin\Debug\Renci.SshNet.dll
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\bin\Debug\BouncyCastle.Crypto.dll
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\bin\Debug\MySql.Data.xml
+K:\Projetos C#\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.csproj.CopyComplete
