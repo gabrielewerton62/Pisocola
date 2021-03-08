@@ -13,38 +13,80 @@ using System.Text.RegularExpressions;
 
 namespace Pisocola
 {
-    public partial class Frm_Initial_Menu : Form
+    public partial class Frm_Initial_Menu : System.Windows.Forms.Form
     {
         public Frm_Initial_Menu()
         {
             InitializeComponent();
+            CustomizeDesign();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private System.Windows.Forms.Form activeForm = null;
+
+        private void CustomizeDesign()
         {
-            //List<Object> list = CustomerDAO.GetInstance().GetCustomers();
-            
-            //Customer customer = (Customer)list[0];
-
-            //Customer customerGet = CustomerDAO.GetInstance().GetCustomer(1);
-
-            Customer customerIns = new Customer();
-
-            customerIns.SetIdCustomer(10);
-            customerIns.SetNmCustomer("NOME DO CLIENTE");
-            customerIns.SetNmSocial("ARGAMASA PERNAMBUCO");
-            customerIns.SetNrCpfCnpj("555.555.555-78");
-            customerIns.SetNrInsc("9999999-09");
-            customerIns.SetDsAddress("AV. COSTA AZUL, 320");
-            customerIns.SetNrPhone("98534-4236");
-
-            Customer updated = CustomerDAO.GetInstance().UpdateCustomer(customerIns);
-
-            Customer inserted = CustomerDAO.GetInstance().InsertCustomer(customerIns);
-
-            //CustomerDAO.GetInstance().DeleteCustomer(customerIns);
-
-            //Console.WriteLine("NOME DO CLIENTE: " + updated.GetNmCustomer());
+            Panel_Customer_SubMenu.Visible = false;
         }
+
+        private void HideSubMenu()
+        {
+            if (Panel_Customer_SubMenu.Visible == true)
+            {
+                Panel_Customer_SubMenu.Visible = false;
+            }
+        }
+
+        private void ShowSubMenu(Panel subMenu)
+        {
+
+            if (subMenu.Visible == false)
+            {
+                HideSubMenu();
+                subMenu.Visible = true;
+            }
+            else
+            {
+                subMenu.Visible = false;
+            }
+
+        }
+
+        private void Btn_Customer_Menu_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(Panel_Customer_SubMenu);
+        }
+
+        private void Btn_Consult_Customer_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Frm_New_Customer());
+            HideSubMenu();
+        }
+
+        private void Btn_Register_Customer_Click(object sender, EventArgs e)
+        {
+            HideSubMenu();
+        }
+
+        private void Btn_Import_Customer_Click(object sender, EventArgs e)
+        {
+            HideSubMenu();
+        }
+
+        private void OpenChildForm(System.Windows.Forms.Form childForm)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+
+            activeForm = childForm;
+
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            Panel_Child_Form.Controls.Add(childForm);
+            Panel_Child_Form.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
     }
 }

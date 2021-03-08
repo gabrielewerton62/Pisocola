@@ -55,7 +55,7 @@ namespace Pisocola.dao
 
         public Customer UpdateCustomer(Customer customer)
         {
-            return (Customer)UpdateItem("UPDATE " + tableName + " SET NM_CUSTOMER = @,  NM_SOCIAL = @, NR_CPF_CNPJ = @, NR_INSC = @, DS_ADDRESS = @, NR_PHONE = @, DT_INSERT = SYSDATE() WHERE ID_CUSTOMER = @",
+            return (Customer) UpdateItem("UPDATE " + tableName + " SET NM_CUSTOMER = @,  NM_SOCIAL = @, NR_CPF_CNPJ = @, NR_INSC = @, DS_ADDRESS = @, NR_PHONE = @, DT_INSERT = SYSDATE() WHERE ID_CUSTOMER = @",
                         new Object[] {
                             customer.GetNmCustomer(),
                             customer.GetNmSocial(),
