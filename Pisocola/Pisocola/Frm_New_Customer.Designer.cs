@@ -110,7 +110,7 @@
             this.Btn_Search_Customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.Btn_Search_Customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Search_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Search_Customer.Location = new System.Drawing.Point(1211, 38);
+            this.Btn_Search_Customer.Location = new System.Drawing.Point(1211, 61);
             this.Btn_Search_Customer.Name = "Btn_Search_Customer";
             this.Btn_Search_Customer.Size = new System.Drawing.Size(101, 31);
             this.Btn_Search_Customer.TabIndex = 11;
