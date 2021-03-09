@@ -18,7 +18,7 @@ namespace Pisocola
         public Frm_Initial_Menu()
         {
             InitializeComponent();
-            CustomizeDesign();
+            //CustomizeDesign();
         }
 
         private System.Windows.Forms.Form activeForm = null;
@@ -53,23 +53,23 @@ namespace Pisocola
 
         private void Btn_Customer_Menu_Click(object sender, EventArgs e)
         {
-            ShowSubMenu(Panel_Customer_SubMenu);
+            //ShowSubMenu(Panel_Customer_SubMenu);
         }
 
         private void Btn_Consult_Customer_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Frm_New_Customer());
-            HideSubMenu();
+            //HideSubMenu();
         }
 
         private void Btn_Register_Customer_Click(object sender, EventArgs e)
         {
-            HideSubMenu();
+            //HideSubMenu();
         }
 
         private void Btn_Import_Customer_Click(object sender, EventArgs e)
         {
-            HideSubMenu();
+            //HideSubMenu();
         }
 
         private void OpenChildForm(System.Windows.Forms.Form childForm)
