@@ -18,6 +18,7 @@ namespace Pisocola
         public Frm_Initial_Menu()
         {
             InitializeComponent();
+            OpenChildForm(new Frm_Consult_Customer());
             //CustomizeDesign();
         }
 
@@ -58,12 +59,13 @@ namespace Pisocola
 
         private void Btn_Consult_Customer_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Frm_New_Customer());
+            OpenChildForm(new Frm_Consult_Customer());
             //HideSubMenu();
         }
 
         private void Btn_Register_Customer_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Frm_New_Customer());
             //HideSubMenu();
         }
 

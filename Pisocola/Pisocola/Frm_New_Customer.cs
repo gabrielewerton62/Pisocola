@@ -7,82 +7,145 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Pisocola.dao;
 using Pisocola.model;
-using System.Collections;
+using Pisocola.dao;
 
 namespace Pisocola
 {
-    public partial class Frm_New_Customer : System.Windows.Forms.Form
+    public partial class Frm_New_Customer : Form
     {
         public Frm_New_Customer()
         {
             InitializeComponent();
+            Rb_New_Cnpj.Checked = true;
         }
 
-        private void Btn_Search_Customer_Click(object sender, EventArgs e)
+        private List<string> fields;
+
+        private void SaveCustomer()
         {
-            LoadCustomerListView();
+            bool isValid = ValidadeFields();
+
+            if (isValid)
+            {
+                Customer c = new Customer();
+
+                c.SetNmCustomer(Inpt_Nm_Customer.Text);
+                c.SetNmSocial(Inpt_Nm_Social.Text);
+                c.SetDsAddress(Inpt_Ds_Address.Text);
+                c.SetNrCpfCnpj(Inpt_Cpf_Cnpj.Text);
+                c.SetNrInsc(Inpt_Nr_Insc.Text);
+                c.SetNrPhone(Inpt_Nr_Phone.Text);
+
+                CustomerDAO.GetInstance().InsertCustomer(c);
+
+                Console.WriteLine("SUCESSO!");
+            }
+            else
+            {
+                string emptyFields = "";
+
+                foreach (string item in fields)
+                {
+                    emptyFields += item + "\n";
+                }
+
+                MessageBox.Show("Alguns campos obrigatórios não foram preenchidos, são eles:\n\n" + emptyFields, "Atenção");
+                fields = null;
+            }
         }
 
-        private void Inpt_Customer_Name_KeyPress(object sender, KeyPressEventArgs e)
+        private bool ValidadeFields()
+        {
+            bool isValid = true;
+            fields = new List<string>();
+
+            if(Inpt_Nm_Customer.Text == "")
+            {
+                isValid = false;
+                fields.Add("Nome Fantasia");
+            }
+
+            if (Inpt_Nm_Social.Text == "")
+            {
+                isValid = false;
+                fields.Add("Nome Social");
+            }
+
+            if (Inpt_Ds_Address.Text == "")
+            {
+                isValid = false;
+                fields.Add("Endereço");
+            }
+
+            if (Rb_New_Cpf.Checked)
+            {
+                if(Inpt_Cpf_Cnpj.Text == "   .   .   -")
+                {
+                    isValid = false;
+                    fields.Add("CPF/CNPJ");
+                }
+            }
+            else
+            {
+                if (Inpt_Cpf_Cnpj.Text == "   .   .   /    -")
+                {
+                    isValid = false;
+                    fields.Add("CPF/CNPJ");
+                }
+            }
+
+            if (Inpt_Nr_Insc.Text == "       -")
+            {
+                isValid = false;
+                fields.Add("Inscrição");
+            }
+
+            return isValid;
+        }
+
+        private void Inpt_Nm_Customer_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = (e.KeyChar.ToString()).ToUpper().ToCharArray()[0];
         }
 
-        private void Inpt_Social_Name_KeyPress(object sender, KeyPressEventArgs e)
+        private void Inpt_Nm_Social_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = (e.KeyChar.ToString()).ToUpper().ToCharArray()[0];
         }
 
-        private void LoadCustomerListView()
+        private void Inpt_Ds_Address_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Grid_Customer_Consult.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            Grid_Customer_Consult.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            Grid_Customer_Consult.Items.Clear();
+            e.KeyChar = (e.KeyChar.ToString()).ToUpper().ToCharArray()[0];
+        }
 
-            Customer c;
-            ListViewItem item;
+        private void ChangeCpfCnpjMask()
+        {
+            Inpt_Cpf_Cnpj.Clear();
 
-            string where = "";
-
-            if (Inpt_Customer_Name.Text != "")
-                where += "AND NM_CUSTOMER LIKE '%" + Inpt_Customer_Name.Text + "%' ";
-
-            if (Inpt_Social_Name.Text != "")
-                where += "AND NM_SOCIAL LIKE '%" + Inpt_Social_Name.Text + "%' ";
-
-            if (Inpt_Cnpj.Text != "  .   .   /    -")
-                where += "AND NR_CPF_CNPJ = '" + Inpt_Cnpj.Text + "' ";
-
-            if (Inpt_Cpf.Text != "   .   .   -")
-                where += "AND NR_CPF_CNPJ = '" + Inpt_Cpf.Text + "' ";
-
-            List<Object> list = CustomerDAO.GetInstance().GetCustomersByWhere(where);
-            string[] row = new string[8];
-
-            for (int count = 0; count < list.Count; count++)
+            if (Rb_New_Cpf.Checked)
             {
-                c = (Customer) list[count];
-
-                row[0] = Convert.ToString(c.GetIdCustomer());
-                row[1] = c.GetNmCustomer();
-                row[2] = c.GetNmSocial();
-                row[3] = c.GetNrCpfCnpj();
-                row[4] = c.GetNrInsc();
-                row[5] = c.GetDsAddress();
-                row[6] = c.GetNrPhone();
-                row[7] = Convert.ToString(c.GetDtInsert()).Split(' ')[0];
-
-                item = new ListViewItem(row);
-                Grid_Customer_Consult.Items.Add(item);
+                Inpt_Cpf_Cnpj.Mask = @"000,000,000-00";
             }
-
-            foreach (ColumnHeader column in Grid_Customer_Consult.Columns)
+            else
             {
-                column.Width = -2;
+                Inpt_Cpf_Cnpj.Mask = @"000,000,000/0000-00";
             }
         }
 
+        private void Rb_New_Cpf_CheckedChanged(object sender, EventArgs e)
+        {
+            ChangeCpfCnpjMask();
+        }
+
+        private void Rb_New_Cnpj_CheckedChanged(object sender, EventArgs e)
+        {
+            ChangeCpfCnpjMask();
+        }
+
+        private void Btn_Save_Customer_Click(object sender, EventArgs e)
+        {
+            SaveCustomer();
+        }
     }
 }
