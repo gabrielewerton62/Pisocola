@@ -42,6 +42,16 @@ namespace Pisocola.com.dao
             return GetList("SELECT * FROM " + tableName + " WHERE 1=1 " + where);
         }
 
+        public bool VerifyCpfCnpj(string nrCpfCnpj)
+        {
+            Customer c = (Customer) GetItem("SELECT * FROM " + tableName + " WHERE 1=1 AND NR_CPF_CNPJ = '" + nrCpfCnpj + "'");
+
+            if (c != null)
+                return true;
+            else
+                return false;
+        }
+
         public Customer InsertCustomer (Customer customer)
         {
             int id = instertItem("INSERT INTO " + tableName + " (NM_CUSTOMER, NM_SOCIAL, NR_CPF_CNPJ, NR_INSC, DS_ADDRESS, NR_PHONE, DT_INSERT) VALUES (@, @, @, @, @, @, SYSDATE())",

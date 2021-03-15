@@ -41,9 +41,11 @@
             this.Btn_Consult_Customer = new System.Windows.Forms.Button();
             this.Btn_Customer_Menu = new System.Windows.Forms.Button();
             this.Panel_Child_Form = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.Panel_Side_Menu.SuspendLayout();
             this.Panel_Seller_SubMenu.SuspendLayout();
             this.Panel_Customer_SubMenu.SuspendLayout();
+            this.Panel_Child_Form.SuspendLayout();
             this.SuspendLayout();
             // 
             // Panel_Side_Menu
@@ -233,6 +235,7 @@
             // Panel_Child_Form
             // 
             this.Panel_Child_Form.BackColor = System.Drawing.Color.Snow;
+            this.Panel_Child_Form.Controls.Add(this.panel1);
             this.Panel_Child_Form.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Child_Form.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Panel_Child_Form.ForeColor = System.Drawing.SystemColors.Control;
@@ -240,6 +243,15 @@
             this.Panel_Child_Form.Name = "Panel_Child_Form";
             this.Panel_Child_Form.Size = new System.Drawing.Size(1124, 561);
             this.Panel_Child_Form.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.Location = new System.Drawing.Point(312, 56);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(494, 448);
+            this.panel1.TabIndex = 0;
             // 
             // Frm_Initial_Menu
             // 
@@ -258,6 +270,7 @@
             this.Panel_Side_Menu.ResumeLayout(false);
             this.Panel_Seller_SubMenu.ResumeLayout(false);
             this.Panel_Customer_SubMenu.ResumeLayout(false);
+            this.Panel_Child_Form.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -275,6 +288,7 @@
         private System.Windows.Forms.Button Btn_Register_Seller;
         private System.Windows.Forms.Button Btn_Consult_Seller;
         private System.Windows.Forms.Panel Panel_Child_Form;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

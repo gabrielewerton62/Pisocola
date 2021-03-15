@@ -49,41 +49,44 @@ namespace Pisocola.com.dao
                 dsAddress = columns[4];
                 nrPhone = columns[5];
 
+                bool cpfCnpjFormat = Util.ValidateCpfCnpj(nrCpfCnpj);
+                bool cpfCnpjExists = CustomerDAO.GetInstance().VerifyCpfCnpj(nrCpfCnpj);
+
                 //Validando formatacao de CPF/CNPJ
-
-                bool cpfCnpjIsValid = Util.ValidateCpfCnpj(nrCpfCnpj);
-
-                if (!cpfCnpjIsValid)
+                if (!cpfCnpjFormat)
                 {
-                    row.Add("NR_CPF_CNPJ_ERROR", errorList["NR_CPF_CNPJ_ERROR"]);
+                    row.Add("NR_CPF_CNPJ_FORMAT_ERROR", errorList["NR_CPF_CNPJ_FORMAT_ERROR"]);
+                }
+
+                //Verificando se o CPF/CNPJ ja esta cadastrado
+                if (cpfCnpjExists)
+                {
+                    row.Add("NR_CPF_CNPJ_EXISTS_ERROR", errorList["NR_CPF_CNPJ_EXISTS_ERROR"]);
                 }
 
                 row.Add("NR_CPF_CNPJ", nrCpfCnpj);
 
                 //Validando formatacao de numero de telefone
-
                 bool nrPhoneIsValid = Util.ValidateNrPhone(nrPhone);
 
                 if (!nrPhoneIsValid)
                 {
-                    row.Add("NR_PHONE_ERROR", errorList["NR_PHONE_ERROR"]);
+                    row.Add("NR_PHONE_FORMAT_ERROR", errorList["NR_PHONE_FORMAT_ERROR"]);
                 }
 
                 row.Add("NR_PHONE", nrPhone);
 
                 //Validando formatacao de numero de inscricao
-
                 bool nrInscIsValid = Util.ValidateNrInsc(nrInsc);
 
                 if (!nrInscIsValid)
                 {
-                    row.Add("NR_INSC_ERROR", errorList["NR_INSC_ERROR"]);
+                    row.Add("NR_INSC_FORMAT_ERROR", errorList["NR_INSC_FORMAT_ERROR"]);
                 }
 
                 row.Add("NR_INSC", nrInsc);
 
                 //Adicionando demais campos sem validacao de formato
-
                 row.Add("NM_CUSTOMER", nmCustomer);
                 row.Add("NM_SOCIAL", nmSocial);
                 row.Add("DS_ADDRESS", dsAddress);

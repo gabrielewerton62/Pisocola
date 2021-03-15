@@ -106,6 +106,8 @@ namespace Pisocola.com.dao
 
             try
             {
+                string database = MySqlConnectionConfig.GetDatabase();
+
                 MySqlConnection c = MySqlConnectionConfig.GetConnection();
                 c.Open();
 
@@ -120,7 +122,7 @@ namespace Pisocola.com.dao
 
                 dr.Close();
 
-                cmd = new MySqlCommand("SELECT auto_increment - 1 LAST_ID FROM information_schema.tables WHERE table_name = '" + tableName + "' AND table_schema = 'pisocola'", c);
+                cmd = new MySqlCommand("SELECT auto_increment - 1 LAST_ID FROM information_schema.tables WHERE table_name = '" + tableName + "' AND table_schema = '" + database + "'", c);
                 dr = cmd.ExecuteReader();
 
                 while (dr.Read())
@@ -222,7 +224,7 @@ namespace Pisocola.com.dao
                 {
                     strIndex = match.Index;
 
-                    if (obj.GetType() == typeof(string))
+                    if (obj.GetType() != typeof(int) || obj.GetType() != typeof(float))
                     {
                         value = (string)"'" + obj + "'";
                     }

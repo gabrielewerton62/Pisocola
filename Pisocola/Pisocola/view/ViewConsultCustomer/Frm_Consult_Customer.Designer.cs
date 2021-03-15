@@ -47,6 +47,7 @@
             this.Rb_Consult_Cnpj = new System.Windows.Forms.RadioButton();
             this.Rb_Consult_Cpf = new System.Windows.Forms.RadioButton();
             this.Btn_Edit_Customer = new System.Windows.Forms.Button();
+            this.Btn_Delete_Customer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Inpt_Customer_Name
@@ -97,9 +98,9 @@
             this.Btn_Search_Customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.Btn_Search_Customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Search_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Search_Customer.Location = new System.Drawing.Point(1104, 53);
+            this.Btn_Search_Customer.Location = new System.Drawing.Point(1081, 53);
             this.Btn_Search_Customer.Name = "Btn_Search_Customer";
-            this.Btn_Search_Customer.Size = new System.Drawing.Size(101, 31);
+            this.Btn_Search_Customer.Size = new System.Drawing.Size(81, 31);
             this.Btn_Search_Customer.TabIndex = 11;
             this.Btn_Search_Customer.Text = "Pesquisar";
             this.Btn_Search_Customer.UseVisualStyleBackColor = false;
@@ -217,13 +218,27 @@
             this.Btn_Edit_Customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.Btn_Edit_Customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Edit_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Edit_Customer.Location = new System.Drawing.Point(1211, 53);
+            this.Btn_Edit_Customer.Location = new System.Drawing.Point(1168, 53);
             this.Btn_Edit_Customer.Name = "Btn_Edit_Customer";
-            this.Btn_Edit_Customer.Size = new System.Drawing.Size(101, 31);
+            this.Btn_Edit_Customer.Size = new System.Drawing.Size(65, 31);
             this.Btn_Edit_Customer.TabIndex = 29;
             this.Btn_Edit_Customer.Text = "Editar";
             this.Btn_Edit_Customer.UseVisualStyleBackColor = false;
             this.Btn_Edit_Customer.Click += new System.EventHandler(this.Btn_Edit_Customer_Click);
+            // 
+            // Btn_Delete_Customer
+            // 
+            this.Btn_Delete_Customer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Delete_Customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.Btn_Delete_Customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Delete_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Delete_Customer.Location = new System.Drawing.Point(1239, 53);
+            this.Btn_Delete_Customer.Name = "Btn_Delete_Customer";
+            this.Btn_Delete_Customer.Size = new System.Drawing.Size(73, 31);
+            this.Btn_Delete_Customer.TabIndex = 30;
+            this.Btn_Delete_Customer.Text = "Deletar";
+            this.Btn_Delete_Customer.UseVisualStyleBackColor = false;
+            this.Btn_Delete_Customer.Click += new System.EventHandler(this.Btn_Delete_Customer_Click);
             // 
             // Frm_Consult_Customer
             // 
@@ -231,6 +246,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(1324, 561);
+            this.Controls.Add(this.Btn_Delete_Customer);
             this.Controls.Add(this.Btn_Edit_Customer);
             this.Controls.Add(this.Rb_Consult_Cnpj);
             this.Controls.Add(this.Rb_Consult_Cpf);
@@ -270,5 +286,6 @@
         private System.Windows.Forms.RadioButton Rb_Consult_Cnpj;
         private System.Windows.Forms.RadioButton Rb_Consult_Cpf;
         private System.Windows.Forms.Button Btn_Edit_Customer;
+        private System.Windows.Forms.Button Btn_Delete_Customer;
     }
 }

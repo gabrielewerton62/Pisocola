@@ -24,5 +24,10 @@ namespace Pisocola.control
             return connection;
         }
 
+        public static string GetDatabase()
+        {
+            return database;
+        }
+
     }
 }

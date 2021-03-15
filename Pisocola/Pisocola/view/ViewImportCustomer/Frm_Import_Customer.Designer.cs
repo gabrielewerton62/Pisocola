@@ -65,7 +65,7 @@
             this.Grid_Import_Lines.HideSelection = false;
             this.Grid_Import_Lines.Location = new System.Drawing.Point(12, 46);
             this.Grid_Import_Lines.Name = "Grid_Import_Lines";
-            this.Grid_Import_Lines.Size = new System.Drawing.Size(1300, 223);
+            this.Grid_Import_Lines.Size = new System.Drawing.Size(1300, 254);
             this.Grid_Import_Lines.TabIndex = 13;
             this.Grid_Import_Lines.UseCompatibleStateImageBehavior = false;
             this.Grid_Import_Lines.View = System.Windows.Forms.View.Details;
@@ -134,9 +134,9 @@
             this.Field_Nr_Line_Error,
             this.Field_Ds_Error});
             this.Grid_Invalid_Lines.HideSelection = false;
-            this.Grid_Invalid_Lines.Location = new System.Drawing.Point(12, 306);
+            this.Grid_Invalid_Lines.Location = new System.Drawing.Point(12, 337);
             this.Grid_Invalid_Lines.Name = "Grid_Invalid_Lines";
-            this.Grid_Invalid_Lines.Size = new System.Drawing.Size(1300, 243);
+            this.Grid_Invalid_Lines.Size = new System.Drawing.Size(1300, 212);
             this.Grid_Invalid_Lines.TabIndex = 19;
             this.Grid_Invalid_Lines.UseCompatibleStateImageBehavior = false;
             this.Grid_Invalid_Lines.View = System.Windows.Forms.View.Details;
@@ -155,7 +155,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(6, 272);
+            this.label1.Location = new System.Drawing.Point(6, 303);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(209, 31);
             this.label1.TabIndex = 20;

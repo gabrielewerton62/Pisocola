@@ -68,7 +68,7 @@ namespace Pisocola
                     CustomerDAO.GetInstance().InsertCustomer(c);
                 }
 
-                File.Move(currentPath, importFolderPath);
+                //File.Move(currentPath, importFolderPath);
 
                 currentPath = "";
                 importFolderPath = "";

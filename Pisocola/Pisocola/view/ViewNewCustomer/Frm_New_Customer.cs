@@ -83,8 +83,17 @@ namespace Pisocola
                 }
                 else
                 {
-                    CustomerDAO.GetInstance().InsertCustomer(c);
-                    MessageBox.Show("Cliente cadastrado com sucesso!", "Concluído");
+                    bool cpfCnpjExists = CustomerDAO.GetInstance().VerifyCpfCnpj(c.GetNrCpfCnpj());
+
+                    if (cpfCnpjExists)
+                    {
+                        MessageBox.Show("O CPF/CNPJ já está cadastrado!", "Atenção!");
+                    }
+                    else
+                    {
+                        CustomerDAO.GetInstance().InsertCustomer(c);
+                        MessageBox.Show("Cliente cadastrado com sucesso!", "Concluído");
+                    }
                 }
             }
             else

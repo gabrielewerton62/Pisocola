@@ -118,7 +118,7 @@ namespace Pisocola
             catch (ArgumentOutOfRangeException e)
             {
                 Console.WriteLine(e.StackTrace);
-                MessageBox.Show("Para abrir um novo cliente, selecione seu ID.", "Atenção");
+                MessageBox.Show("Para editar um cliente, selecione seu ID.", "Atenção");
             }
         }
 
@@ -146,5 +146,23 @@ namespace Pisocola
             ChangeCpfCnpjMask();
         }
 
+        private void Btn_Delete_Customer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Customer c = new Customer();
+
+                c.SetIdCustomer(Convert.ToInt32(Grid_Customer_Consult.SelectedItems[0].SubItems[0].Text));
+                CustomerDAO.GetInstance().DeleteCustomer(c);
+
+                LoadCustomerListView();
+                MessageBox.Show("Usuário deletado com sucesso.", "Concluído");
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                MessageBox.Show("Para deletar um cliente, selecione seu ID.", "Atenção");
+            }
+        }
     }
 }
