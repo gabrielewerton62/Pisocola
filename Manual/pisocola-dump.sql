@@ -32,7 +32,7 @@ CREATE TABLE `customer` (
   `NR_PHONE` varchar(100) DEFAULT NULL,
   `DT_INSERT` datetime DEFAULT NULL,
   PRIMARY KEY (`ID_CUSTOMER`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (1,'GABRIEL EWERTON DA SILVA RANGEL','PISOCOLA','255.147.444-18','1244711-23','RUA HENRIQUE SANTIAGO','94852-3744','2021-03-15 19:38:04');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +68,7 @@ CREATE TABLE `parameter` (
 
 LOCK TABLES `parameter` WRITE;
 /*!40000 ALTER TABLE `parameter` DISABLE KEYS */;
-INSERT INTO `parameter` VALUES (1,'CUSTOMER_IMPORT','IMPORT_PATH','K:\\GitHub\\Pisocola\\Pisocola\\Pisocola\\view\\ViewImportCustomer\\imports\\','2021-03-12 23:03:29'),(3,'CUSTOMER_IMPORT_ERROR','NUMBER_OF_COLUMNS_ERROR','O número de colunas está incorreto. O arquivo deve conter apenas 6 colunas','2021-03-15 02:13:52'),(4,'CUSTOMER_IMPORT_ERROR','NR_CPF_CNPJ_FORMAT_ERROR','A formatação do CPF/CNPJ está errada!','2021-03-15 02:13:53'),(5,'CUSTOMER_IMPORT_ERROR','NR_PHONE_FORMAT_ERROR','A formatação do Número de Telefone está errada!','2021-03-15 02:13:54'),(6,'CUSTOMER_IMPORT_ERROR','NR_INSC_FORMAT_ERROR','A formatação do Número de Inscrição está errada!','2021-03-15 02:13:55'),(7,'CUSTOMER_IMPORT_ERROR','NR_CPF_CNPJ_EXISTS_ERROR','O CPF/CNPJ já está cadastrado!','2021-03-15 18:19:29');
+INSERT INTO `parameter` VALUES (1,'CUSTOMER_IMPORT','IMPORT_PATH','K:\\GitHub\\Pisocola\\Pisocola\\Pisocola\\view\\ViewImportCustomer\\imports\\','2021-03-12 23:03:29'),(3,'CUSTOMER_IMPORT_ERROR','NUMBER_OF_COLUMNS_ERROR','O numero de colunas esta incorreto. O arquivo deve conter apenas 6 colunas','2021-03-15 02:13:52'),(4,'CUSTOMER_IMPORT_ERROR','NR_CPF_CNPJ_FORMAT_ERROR','A formatacao do CPF/CNPJ esta errada!','2021-03-15 02:13:53'),(5,'CUSTOMER_IMPORT_ERROR','NR_PHONE_FORMAT_ERROR','A formatacao do Numero de Telefone esta errada!','2021-03-15 02:13:54'),(6,'CUSTOMER_IMPORT_ERROR','NR_INSC_FORMAT_ERROR','A formatacao do Numero de Inscricao esta errada!','2021-03-15 02:13:55'),(7,'CUSTOMER_IMPORT_ERROR','NR_CPF_CNPJ_EXISTS_ERROR','O CPF/CNPJ ja esta cadastrado!','2021-03-15 18:19:29');
 /*!40000 ALTER TABLE `parameter` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,4 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-15 19:29:31
+-- Dump completed on 2021-03-15 19:41:15
