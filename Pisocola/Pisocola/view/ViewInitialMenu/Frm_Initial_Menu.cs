@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Pisocola.model;
-using Pisocola.dao;
 using System.Text.RegularExpressions;
 
 namespace Pisocola
@@ -18,8 +16,7 @@ namespace Pisocola
         public Frm_Initial_Menu()
         {
             InitializeComponent();
-            OpenChildForm(new Frm_Consult_Customer());
-            //CustomizeDesign();
+            CustomizeDesign();
         }
 
         private System.Windows.Forms.Form activeForm = null;
@@ -27,14 +24,15 @@ namespace Pisocola
         private void CustomizeDesign()
         {
             Panel_Customer_SubMenu.Visible = false;
+            Panel_Seller_SubMenu.Visible = false;
         }
 
         private void HideSubMenu()
         {
             if (Panel_Customer_SubMenu.Visible == true)
-            {
                 Panel_Customer_SubMenu.Visible = false;
-            }
+            if (Panel_Seller_SubMenu.Visible == true)
+                Panel_Seller_SubMenu.Visible = false;
         }
 
         private void ShowSubMenu(Panel subMenu)
@@ -54,12 +52,17 @@ namespace Pisocola
 
         private void Btn_Customer_Menu_Click(object sender, EventArgs e)
         {
-            //ShowSubMenu(Panel_Customer_SubMenu);
+            ShowSubMenu(Panel_Customer_SubMenu);
+        }
+
+        private void Btn_Seller_Menu_Click(object sender, EventArgs e)
+        {
+            ShowSubMenu(Panel_Seller_SubMenu);
         }
 
         private void Btn_Consult_Customer_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Frm_Consult_Customer());
+            OpenChildForm(new Frm_Consult_Customer((Frm_Initial_Menu) Form.ActiveForm));
             //HideSubMenu();
         }
 
@@ -71,10 +74,11 @@ namespace Pisocola
 
         private void Btn_Import_Customer_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Frm_Import_Customer());
             //HideSubMenu();
         }
 
-        private void OpenChildForm(System.Windows.Forms.Form childForm)
+        public void OpenChildForm(System.Windows.Forms.Form childForm)
         {
             if (activeForm != null)
                 activeForm.Close();
@@ -89,6 +93,5 @@ namespace Pisocola
             childForm.BringToFront();
             childForm.Show();
         }
-
     }
 }

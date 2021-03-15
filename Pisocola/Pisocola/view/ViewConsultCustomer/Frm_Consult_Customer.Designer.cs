@@ -46,6 +46,7 @@
             this.Inpt_Cpf_Cnpj = new System.Windows.Forms.MaskedTextBox();
             this.Rb_Consult_Cnpj = new System.Windows.Forms.RadioButton();
             this.Rb_Consult_Cpf = new System.Windows.Forms.RadioButton();
+            this.Btn_Edit_Customer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Inpt_Customer_Name
@@ -96,7 +97,7 @@
             this.Btn_Search_Customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.Btn_Search_Customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Search_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Search_Customer.Location = new System.Drawing.Point(1211, 53);
+            this.Btn_Search_Customer.Location = new System.Drawing.Point(1104, 53);
             this.Btn_Search_Customer.Name = "Btn_Search_Customer";
             this.Btn_Search_Customer.Size = new System.Drawing.Size(101, 31);
             this.Btn_Search_Customer.TabIndex = 11;
@@ -121,7 +122,7 @@
             this.Grid_Customer_Consult.HideSelection = false;
             this.Grid_Customer_Consult.Location = new System.Drawing.Point(12, 90);
             this.Grid_Customer_Consult.Name = "Grid_Customer_Consult";
-            this.Grid_Customer_Consult.Size = new System.Drawing.Size(1300, 451);
+            this.Grid_Customer_Consult.Size = new System.Drawing.Size(1300, 459);
             this.Grid_Customer_Consult.TabIndex = 12;
             this.Grid_Customer_Consult.UseCompatibleStateImageBehavior = false;
             this.Grid_Customer_Consult.View = System.Windows.Forms.View.Details;
@@ -210,12 +211,27 @@
             this.Rb_Consult_Cpf.UseVisualStyleBackColor = false;
             this.Rb_Consult_Cpf.CheckedChanged += new System.EventHandler(this.Rb_Consult_Cpf_CheckedChanged);
             // 
+            // Btn_Edit_Customer
+            // 
+            this.Btn_Edit_Customer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Edit_Customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.Btn_Edit_Customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Edit_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Edit_Customer.Location = new System.Drawing.Point(1211, 53);
+            this.Btn_Edit_Customer.Name = "Btn_Edit_Customer";
+            this.Btn_Edit_Customer.Size = new System.Drawing.Size(101, 31);
+            this.Btn_Edit_Customer.TabIndex = 29;
+            this.Btn_Edit_Customer.Text = "Editar";
+            this.Btn_Edit_Customer.UseVisualStyleBackColor = false;
+            this.Btn_Edit_Customer.Click += new System.EventHandler(this.Btn_Edit_Customer_Click);
+            // 
             // Frm_Consult_Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(1324, 561);
+            this.Controls.Add(this.Btn_Edit_Customer);
             this.Controls.Add(this.Rb_Consult_Cnpj);
             this.Controls.Add(this.Rb_Consult_Cpf);
             this.Controls.Add(this.label5);
@@ -253,5 +269,6 @@
         private System.Windows.Forms.MaskedTextBox Inpt_Cpf_Cnpj;
         private System.Windows.Forms.RadioButton Rb_Consult_Cnpj;
         private System.Windows.Forms.RadioButton Rb_Consult_Cpf;
+        private System.Windows.Forms.Button Btn_Edit_Customer;
     }
 }

@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using Pisocola.model;
-using Pisocola.dao;
+using Pisocola.com.model;
 
-namespace Pisocola.dao
+namespace Pisocola.com.dao
 {
     public class CustomerDAO : BaseDAO
     {
@@ -75,6 +74,18 @@ namespace Pisocola.dao
         public void DeleteCustomer(Customer customer)
         {
             DeleteItem("DELETE FROM " + tableName + " WHERE ID_CUSTOMER = @", new Object[] { customer.GetIdCustomer() });
+        }
+
+        protected override Dictionary<string, string> ProcessRowNoCast(MySqlDataReader data)
+        {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+
+            for (int count = 0; count < data.FieldCount; count++)
+            {
+                d.Add(data.GetName(count), Convert.ToString(data.GetValue(count)));
+            }
+
+            return d;
         }
 
         protected override Object ProcessRow(MySqlDataReader data)

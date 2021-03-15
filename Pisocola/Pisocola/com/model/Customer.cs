@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pisocola.model
+namespace Pisocola.com.model
 {
     public class Customer
     {

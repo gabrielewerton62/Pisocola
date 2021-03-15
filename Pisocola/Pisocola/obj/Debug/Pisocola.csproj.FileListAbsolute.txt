@@ -32,3 +32,4 @@ K:\GitHub\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.exe
 K:\GitHub\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.pdb
 K:\GitHub\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.Frm_Consult_Customer.resources
 K:\GitHub\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.Frm_New_Customer.resources
+K:\GitHub\Pisocola\Pisocola\Pisocola\obj\Debug\Pisocola.Frm_Import_Customer.resources

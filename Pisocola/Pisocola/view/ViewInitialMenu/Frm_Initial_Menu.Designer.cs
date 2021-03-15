@@ -140,6 +140,7 @@
             this.Btn_Seller_Menu.TabIndex = 5;
             this.Btn_Seller_Menu.Text = "Vendedores";
             this.Btn_Seller_Menu.UseVisualStyleBackColor = false;
+            this.Btn_Seller_Menu.Click += new System.EventHandler(this.Btn_Seller_Menu_Click);
             // 
             // Panel_Customer_SubMenu
             // 
@@ -252,7 +253,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1340, 600);
             this.Name = "Frm_Initial_Menu";
-            this.Text = "Menu Inicial";
+            this.Text = "Pisocola Desktop";
             this.Panel_Side_Menu.ResumeLayout(false);
             this.Panel_Seller_SubMenu.ResumeLayout(false);
             this.Panel_Customer_SubMenu.ResumeLayout(false);

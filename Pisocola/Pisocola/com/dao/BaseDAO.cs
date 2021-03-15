@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Pisocola.control;
 
-namespace Pisocola.dao
+namespace Pisocola.com.dao
 {
     public class BaseDAO
     {
@@ -48,18 +48,55 @@ namespace Pisocola.dao
             return list;
         }
 
+        protected List<Dictionary<string, string>> GetListNoCast(string sql)
+        {
+            MySqlConnection c = MySqlConnectionConfig.GetConnection();
+            c.Open();
+
+            MySqlCommand cmd = new MySqlCommand(sql, c);
+            MySqlDataReader dr = cmd.ExecuteReader();
+            List<Dictionary<string, string>> list = new List<Dictionary<string, string>>();
+
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+
+                while (dr.Read())
+                {
+                    list.Add(ProcessRowNoCast(dr));
+                }
+
+                dr.Close();
+                c.Close();
+                Console.WriteLine("Done.");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERRO: " + ex.ToString());
+            }
+
+            return list;
+        }
+
         protected Object GetItem(string sql)
         {
             List<Object> list = GetList(sql);
 
             if (list != null && list.Count > 0)
-            {
                 return list[0];
-            }
             else
-            {
                 return null;
-            }
+        }
+
+        protected Dictionary<string, string> GetItemNoCast(string sql)
+        {
+            List<Dictionary<string, string>> list = GetListNoCast(sql);
+
+            if (list != null && list.Count > 0)
+                return list[0];
+            else
+                return null;
         }
 
         protected int instertItem(string sql, Object[] objs)
@@ -83,7 +120,7 @@ namespace Pisocola.dao
 
                 dr.Close();
 
-                cmd = new MySqlCommand("SELECT auto_increment - 1 LAST_ID FROM information_schema.tables WHERE table_name = 'customer' AND table_schema = 'pisocola'", c);
+                cmd = new MySqlCommand("SELECT auto_increment - 1 LAST_ID FROM information_schema.tables WHERE table_name = '" + tableName + "' AND table_schema = 'pisocola'", c);
                 dr = cmd.ExecuteReader();
 
                 while (dr.Read())
@@ -207,7 +244,13 @@ namespace Pisocola.dao
 
         protected virtual Object ProcessRow(MySqlDataReader data)
         {
-            Console.WriteLine("Nao Implementado");
+            Console.WriteLine("ProcessRow nao Implementado");
+            return null;
+        }
+
+        protected virtual Dictionary<string, string> ProcessRowNoCast(MySqlDataReader data)
+        {
+            Console.WriteLine("ProcessRowNoCast nao Implementado");
             return null;
         }
 

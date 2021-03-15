@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Pisocola.model;
-using Pisocola.dao;
+using Pisocola.com.model;
+using Pisocola.com.dao;
 
 namespace Pisocola
 {
@@ -17,10 +17,48 @@ namespace Pisocola
         public Frm_New_Customer()
         {
             InitializeComponent();
-            Rb_New_Cnpj.Checked = true;
+            InitView();
         }
 
-        private List<string> fields;
+        public Frm_New_Customer(Dictionary<string, string> customerFields)
+        {
+            InitializeComponent();
+
+            this.customerFields = customerFields;
+            InitView();
+        }
+
+        private bool editMode = false;
+        private List<string> emptyfieldsList = null;
+        private Dictionary<string, string> customerFields = null;
+
+        private void InitView()
+        {
+            if (customerFields != null) //Caso a tela esteja em modo de edicao
+            {
+                Btn_Save_Customer.Text = "Atualizar";
+
+                Inpt_Nm_Customer.Text = customerFields["NM_CUSTOMER"];
+                Inpt_Nm_Social.Text = customerFields["NM_SOCIAL"];
+                Inpt_Ds_Address.Text = customerFields["DS_ADDRESS"];
+
+                if (customerFields["NR_CPF_CNPJ"].Contains("/"))
+                    Rb_New_Cnpj.Checked = true;
+                else
+                    Rb_New_Cpf.Checked = true;
+
+                Inpt_Cpf_Cnpj.Text = customerFields["NR_CPF_CNPJ"];
+                Inpt_Nr_Insc.Text = customerFields["NR_INSC"];
+                Inpt_Nr_Phone.Text = customerFields["NR_PHONE"];
+
+                editMode = true;
+            }
+            else //Caso a tela seja o cadastro de um novo cliente
+            {
+                editMode = false;
+                Rb_New_Cnpj.Checked = true;
+            }
+        }
 
         private void SaveCustomer()
         {
@@ -37,45 +75,53 @@ namespace Pisocola
                 c.SetNrInsc(Inpt_Nr_Insc.Text);
                 c.SetNrPhone(Inpt_Nr_Phone.Text);
 
-                CustomerDAO.GetInstance().InsertCustomer(c);
-
-                Console.WriteLine("SUCESSO!");
+                if(editMode)
+                {
+                    c.SetIdCustomer(Convert.ToInt32(customerFields["ID_CUSTOMER"]));
+                    CustomerDAO.GetInstance().UpdateCustomer(c);
+                    MessageBox.Show("Cliente atualizado com sucesso!", "Concluído");
+                }
+                else
+                {
+                    CustomerDAO.GetInstance().InsertCustomer(c);
+                    MessageBox.Show("Cliente cadastrado com sucesso!", "Concluído");
+                }
             }
             else
             {
                 string emptyFields = "";
 
-                foreach (string item in fields)
+                foreach (string item in emptyfieldsList)
                 {
                     emptyFields += item + "\n";
                 }
 
                 MessageBox.Show("Alguns campos obrigatórios não foram preenchidos, são eles:\n\n" + emptyFields, "Atenção");
-                fields = null;
+                emptyfieldsList = null;
             }
         }
 
         private bool ValidadeFields()
         {
             bool isValid = true;
-            fields = new List<string>();
+            emptyfieldsList = new List<string>();
 
             if(Inpt_Nm_Customer.Text == "")
             {
                 isValid = false;
-                fields.Add("Nome Fantasia");
+                emptyfieldsList.Add("Nome Fantasia");
             }
 
             if (Inpt_Nm_Social.Text == "")
             {
                 isValid = false;
-                fields.Add("Nome Social");
+                emptyfieldsList.Add("Nome Social");
             }
 
             if (Inpt_Ds_Address.Text == "")
             {
                 isValid = false;
-                fields.Add("Endereço");
+                emptyfieldsList.Add("Endereço");
             }
 
             if (Rb_New_Cpf.Checked)
@@ -83,7 +129,7 @@ namespace Pisocola
                 if(Inpt_Cpf_Cnpj.Text == "   .   .   -")
                 {
                     isValid = false;
-                    fields.Add("CPF/CNPJ");
+                    emptyfieldsList.Add("CPF/CNPJ");
                 }
             }
             else
@@ -91,14 +137,14 @@ namespace Pisocola
                 if (Inpt_Cpf_Cnpj.Text == "   .   .   /    -")
                 {
                     isValid = false;
-                    fields.Add("CPF/CNPJ");
+                    emptyfieldsList.Add("CPF/CNPJ");
                 }
             }
 
             if (Inpt_Nr_Insc.Text == "       -")
             {
                 isValid = false;
-                fields.Add("Inscrição");
+                emptyfieldsList.Add("Inscrição");
             }
 
             return isValid;

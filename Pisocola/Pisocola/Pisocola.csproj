@@ -47,37 +47,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="control\MySqlConnectionConfig.cs" />
-    <Compile Include="dao\BaseDAO.cs" />
-    <Compile Include="dao\CustomerDAO.cs" />
-    <Compile Include="Frm_Consult_Customer.cs">
+    <Compile Include="com\conn\MySqlConnectionConfig.cs" />
+    <Compile Include="com\dao\BaseDAO.cs" />
+    <Compile Include="com\dao\CustomerDAO.cs" />
+    <Compile Include="com\dao\ImportCustomerDAO.cs" />
+    <Compile Include="com\dao\ParameterDAO.cs" />
+    <Compile Include="com\model\Parameter.cs" />
+    <Compile Include="com\util\Util.cs" />
+    <Compile Include="view\ViewConsultCustomer\Frm_Consult_Customer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_Consult_Customer.Designer.cs">
+    <Compile Include="view\ViewConsultCustomer\Frm_Consult_Customer.Designer.cs">
       <DependentUpon>Frm_Consult_Customer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_Initial_Menu.cs">
+    <Compile Include="view\ViewImportCustomer\Frm_Import_Customer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_Initial_Menu.Designer.cs">
+    <Compile Include="view\ViewImportCustomer\Frm_Import_Customer.Designer.cs">
+      <DependentUpon>Frm_Import_Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\ViewInitialMenu\Frm_Initial_Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ViewInitialMenu\Frm_Initial_Menu.Designer.cs">
       <DependentUpon>Frm_Initial_Menu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_New_Customer.cs">
+    <Compile Include="view\ViewNewCustomer\Frm_New_Customer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_New_Customer.Designer.cs">
+    <Compile Include="view\ViewNewCustomer\Frm_New_Customer.Designer.cs">
       <DependentUpon>Frm_New_Customer.cs</DependentUpon>
     </Compile>
-    <Compile Include="model\Customer.cs" />
+    <Compile Include="com\model\Customer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Frm_Consult_Customer.resx">
+    <EmbeddedResource Include="view\ViewConsultCustomer\Frm_Consult_Customer.resx">
       <DependentUpon>Frm_Consult_Customer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_Initial_Menu.resx">
+    <EmbeddedResource Include="view\ViewImportCustomer\Frm_Import_Customer.resx">
+      <DependentUpon>Frm_Import_Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\ViewInitialMenu\Frm_Initial_Menu.resx">
       <DependentUpon>Frm_Initial_Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_New_Customer.resx">
+    <EmbeddedResource Include="view\ViewNewCustomer\Frm_New_Customer.resx">
       <DependentUpon>Frm_New_Customer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -120,6 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="view\ViewImportCustomer\imports\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
