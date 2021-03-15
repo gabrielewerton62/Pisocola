@@ -42,6 +42,7 @@
             this.Btn_Customer_Menu = new System.Windows.Forms.Button();
             this.Panel_Child_Form = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.Panel_Side_Menu.SuspendLayout();
             this.Panel_Seller_SubMenu.SuspendLayout();
             this.Panel_Customer_SubMenu.SuspendLayout();
@@ -235,6 +236,7 @@
             // Panel_Child_Form
             // 
             this.Panel_Child_Form.BackColor = System.Drawing.Color.Snow;
+            this.Panel_Child_Form.Controls.Add(this.label6);
             this.Panel_Child_Form.Controls.Add(this.panel1);
             this.Panel_Child_Form.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Child_Form.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -248,10 +250,23 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
-            this.panel1.Location = new System.Drawing.Point(312, 56);
+            this.panel1.Location = new System.Drawing.Point(305, 40);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(494, 448);
             this.panel1.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(302, 521);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(520, 17);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Atenção: para funcionamento correto do sistema, ler o manual na raiz do projeto.";
             // 
             // Frm_Initial_Menu
             // 
@@ -271,6 +286,7 @@
             this.Panel_Seller_SubMenu.ResumeLayout(false);
             this.Panel_Customer_SubMenu.ResumeLayout(false);
             this.Panel_Child_Form.ResumeLayout(false);
+            this.Panel_Child_Form.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -289,6 +305,7 @@
         private System.Windows.Forms.Button Btn_Consult_Seller;
         private System.Windows.Forms.Panel Panel_Child_Form;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label6;
     }
 }
 
