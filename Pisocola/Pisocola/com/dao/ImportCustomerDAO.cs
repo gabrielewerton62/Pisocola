@@ -28,6 +28,14 @@ namespace Pisocola.com.dao
             string dsAddress = "";
             string nrPhone = "";
 
+            //CSV deve conter obrigatoriamente 6 colunas de informacao
+
+            if (numberOfColumns != 6)
+            {
+                rows.Add(errorList);
+                return rows;
+            }
+
             //Percorrendo linhas do CSV para fazer as devidas validacoes de informacao
             foreach (string line in lines)
             {
@@ -40,16 +48,6 @@ namespace Pisocola.com.dao
                 nrInsc = columns[3];
                 dsAddress = columns[4];
                 nrPhone = columns[5];
-
-                //CSV deve conter obrigatoriamente 6 colunas de informacao
-
-                if (numberOfColumns > 6)
-                {
-                    row.Add("NUMBER_OF_COLUMNS_ERROR", errorList["NUMBER_OF_COLUMNS_ERROR"]);
-                    rows.Add(row);
-
-                    return rows;
-                }
 
                 //Validando formatacao de CPF/CNPJ
 

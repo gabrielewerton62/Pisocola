@@ -43,6 +43,7 @@
             this.Field_Nr_Line_Error = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Field_Ds_Error = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
+            this.Btn_Import = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -160,12 +161,28 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Linhas Inválidas";
             // 
+            // Btn_Import
+            // 
+            this.Btn_Import.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Import.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.Btn_Import.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Import.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Import.ForeColor = System.Drawing.Color.White;
+            this.Btn_Import.Location = new System.Drawing.Point(990, 9);
+            this.Btn_Import.Name = "Btn_Import";
+            this.Btn_Import.Size = new System.Drawing.Size(158, 31);
+            this.Btn_Import.TabIndex = 21;
+            this.Btn_Import.Text = "Importar";
+            this.Btn_Import.UseVisualStyleBackColor = false;
+            this.Btn_Import.Click += new System.EventHandler(this.Btn_Import_Click);
+            // 
             // Frm_Import_Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(1324, 561);
+            this.Controls.Add(this.Btn_Import);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Grid_Invalid_Lines);
             this.Controls.Add(this.label6);
@@ -195,5 +212,6 @@
         private System.Windows.Forms.ColumnHeader Field_Nr_Phone;
         private System.Windows.Forms.ColumnHeader Field_Nr_Line_Error;
         private System.Windows.Forms.ColumnHeader Field_Ds_Error;
+        private System.Windows.Forms.Button Btn_Import;
     }
 }
