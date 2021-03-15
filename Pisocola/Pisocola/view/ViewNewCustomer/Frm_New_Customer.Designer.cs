@@ -182,7 +182,7 @@
             // Inpt_Nr_Phone
             // 
             this.Inpt_Nr_Phone.Location = new System.Drawing.Point(12, 305);
-            this.Inpt_Nr_Phone.Mask = "(00) 00000-0000";
+            this.Inpt_Nr_Phone.Mask = "00000-0000";
             this.Inpt_Nr_Phone.Name = "Inpt_Nr_Phone";
             this.Inpt_Nr_Phone.Size = new System.Drawing.Size(91, 20);
             this.Inpt_Nr_Phone.TabIndex = 31;
