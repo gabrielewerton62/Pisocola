@@ -125,10 +125,11 @@
             // 
             // Btn_Seller_Menu
             // 
-            this.Btn_Seller_Menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.Btn_Seller_Menu.BackColor = System.Drawing.Color.DimGray;
             this.Btn_Seller_Menu.Dock = System.Windows.Forms.DockStyle.Top;
             this.Btn_Seller_Menu.FlatAppearance.BorderSize = 0;
-            this.Btn_Seller_Menu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.Btn_Seller_Menu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.Btn_Seller_Menu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
             this.Btn_Seller_Menu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Btn_Seller_Menu.Font = new System.Drawing.Font("Arial", 10F);
             this.Btn_Seller_Menu.Image = ((System.Drawing.Image)(resources.GetObject("Btn_Seller_Menu.Image")));

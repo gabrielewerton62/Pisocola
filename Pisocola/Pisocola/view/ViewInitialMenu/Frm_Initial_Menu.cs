@@ -23,7 +23,7 @@ namespace Pisocola
 
         private void CustomizeDesign()
         {
-            Panel_Customer_SubMenu.Visible = false;
+            //Panel_Customer_SubMenu.Visible = false;
             Panel_Seller_SubMenu.Visible = false;
         }
 
@@ -52,12 +52,12 @@ namespace Pisocola
 
         private void Btn_Customer_Menu_Click(object sender, EventArgs e)
         {
-            ShowSubMenu(Panel_Customer_SubMenu);
+            //ShowSubMenu(Panel_Customer_SubMenu);
         }
 
         private void Btn_Seller_Menu_Click(object sender, EventArgs e)
         {
-            ShowSubMenu(Panel_Seller_SubMenu);
+            //ShowSubMenu(Panel_Seller_SubMenu);
         }
 
         private void Btn_Consult_Customer_Click(object sender, EventArgs e)
