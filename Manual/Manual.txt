@@ -17,3 +17,6 @@ BASE DE DADOS:
 
 - Esses scripts estarão disponíves neste mesmo diretório com o nome de pisocola-dump.sql. 
 
+IMPORTAÇÃO:
+
+Um arquivo com o modelo de importação de clientes está disponível neste diretório com o nome de arquivo-modelo.
