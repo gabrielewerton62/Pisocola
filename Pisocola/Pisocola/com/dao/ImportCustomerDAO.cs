@@ -20,6 +20,7 @@ namespace Pisocola.com.dao
             //Numero de colunas do CSV
             int numberOfColumns = lines[0].Split(';').Length;
             string[] columns;
+            bool jumpHeader = true;
 
             string nmCustomer = "";
             string nmSocial = "";
@@ -39,6 +40,13 @@ namespace Pisocola.com.dao
             //Percorrendo linhas do CSV para fazer as devidas validacoes de informacao
             foreach (string line in lines)
             {
+                //Pulando a header do CSV
+                if (jumpHeader)
+                {
+                    jumpHeader = false;
+                    continue;
+                }
+
                 Dictionary<string, string> row = new Dictionary<string, string>();
                 columns = line.Split(';');
 
