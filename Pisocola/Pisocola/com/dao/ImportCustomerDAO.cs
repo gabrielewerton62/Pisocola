@@ -57,6 +57,7 @@ namespace Pisocola.com.dao
                 {
                     row.Add("STRUCTURE_ERROR", errorList["BLANK_LINE_ERROR"]);
                     rows.Add(row);
+                    return rows;
                 }
 
                 //Pulando a header do CSV
