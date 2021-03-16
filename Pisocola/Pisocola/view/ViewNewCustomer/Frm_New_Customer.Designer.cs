@@ -43,6 +43,8 @@
             this.Inpt_Nr_Phone = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Btn_Save_Customer = new System.Windows.Forms.Button();
+            this.Lbl_Valid_Cpf_Cnpj = new System.Windows.Forms.Label();
+            this.Lbl_Valid_Nr_Insc = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label6
@@ -157,6 +159,7 @@
             this.Inpt_Cpf_Cnpj.Name = "Inpt_Cpf_Cnpj";
             this.Inpt_Cpf_Cnpj.Size = new System.Drawing.Size(107, 20);
             this.Inpt_Cpf_Cnpj.TabIndex = 27;
+            this.Inpt_Cpf_Cnpj.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Inpt_Cpf_Cnpj_KeyUp);
             // 
             // label4
             // 
@@ -178,6 +181,7 @@
             this.Inpt_Nr_Insc.Name = "Inpt_Nr_Insc";
             this.Inpt_Nr_Insc.Size = new System.Drawing.Size(73, 20);
             this.Inpt_Nr_Insc.TabIndex = 29;
+            this.Inpt_Nr_Insc.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Inpt_Nr_Insc_KeyUp);
             // 
             // Inpt_Nr_Phone
             // 
@@ -213,12 +217,38 @@
             this.Btn_Save_Customer.UseVisualStyleBackColor = false;
             this.Btn_Save_Customer.Click += new System.EventHandler(this.Btn_Save_Customer_Click);
             // 
+            // Lbl_Valid_Cpf_Cnpj
+            // 
+            this.Lbl_Valid_Cpf_Cnpj.AutoSize = true;
+            this.Lbl_Valid_Cpf_Cnpj.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_Valid_Cpf_Cnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Valid_Cpf_Cnpj.ForeColor = System.Drawing.Color.Black;
+            this.Lbl_Valid_Cpf_Cnpj.Location = new System.Drawing.Point(125, 212);
+            this.Lbl_Valid_Cpf_Cnpj.Name = "Lbl_Valid_Cpf_Cnpj";
+            this.Lbl_Valid_Cpf_Cnpj.Size = new System.Drawing.Size(195, 17);
+            this.Lbl_Valid_Cpf_Cnpj.TabIndex = 33;
+            this.Lbl_Valid_Cpf_Cnpj.Text = "Este valor já está cadastrado!";
+            // 
+            // Lbl_Valid_Nr_Insc
+            // 
+            this.Lbl_Valid_Nr_Insc.AutoSize = true;
+            this.Lbl_Valid_Nr_Insc.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_Valid_Nr_Insc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Valid_Nr_Insc.ForeColor = System.Drawing.Color.Black;
+            this.Lbl_Valid_Nr_Insc.Location = new System.Drawing.Point(91, 259);
+            this.Lbl_Valid_Nr_Insc.Name = "Lbl_Valid_Nr_Insc";
+            this.Lbl_Valid_Nr_Insc.Size = new System.Drawing.Size(195, 17);
+            this.Lbl_Valid_Nr_Insc.TabIndex = 34;
+            this.Lbl_Valid_Nr_Insc.Text = "Este valor já está cadastrado!";
+            // 
             // Frm_New_Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(584, 561);
+            this.Controls.Add(this.Lbl_Valid_Nr_Insc);
+            this.Controls.Add(this.Lbl_Valid_Cpf_Cnpj);
             this.Controls.Add(this.Btn_Save_Customer);
             this.Controls.Add(this.Inpt_Nr_Phone);
             this.Controls.Add(this.label5);
@@ -259,5 +289,7 @@
         private System.Windows.Forms.MaskedTextBox Inpt_Nr_Phone;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Btn_Save_Customer;
+        private System.Windows.Forms.Label Lbl_Valid_Cpf_Cnpj;
+        private System.Windows.Forms.Label Lbl_Valid_Nr_Insc;
     }
 }

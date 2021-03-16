@@ -29,17 +29,36 @@ namespace Pisocola.com.dao
             string dsAddress = "";
             string nrPhone = "";
 
-            //CSV deve conter obrigatoriamente 6 colunas de informacao
-
-            if (numberOfColumns != 6)
-            {
-                rows.Add(errorList);
-                return rows;
-            }
-
             //Percorrendo linhas do CSV para fazer as devidas validacoes de informacao
             foreach (string line in lines)
             {
+                Dictionary<string, string> row = new Dictionary<string, string>();
+                columns = line.Split(';');
+
+                //CSV deve conter obrigatoriamente 6 colunas de informacao
+                if (numberOfColumns != 6)
+                {
+                    row.Add("STRUCTURE_ERROR", errorList["NUMBER_OF_COLUMNS_ERROR"]);
+                    rows.Add(row);
+                    return rows;
+                }
+
+                //Caso uma linha do CSV venha vazia, paro a execucao do loop e retorno a lista
+                if (lines.Length > 1)
+                {
+                    if (!lines[1].Contains(";"))
+                    {
+                        row.Add("STRUCTURE_ERROR", errorList["SEPARATOR_ERROR"]);
+                        rows.Add(row);
+                        return rows;
+                    }
+                }
+                else
+                {
+                    row.Add("STRUCTURE_ERROR", errorList["BLANK_LINE_ERROR"]);
+                    rows.Add(row);
+                }
+
                 //Pulando a header do CSV
                 if (jumpHeader)
                 {
@@ -47,8 +66,9 @@ namespace Pisocola.com.dao
                     continue;
                 }
 
-                Dictionary<string, string> row = new Dictionary<string, string>();
-                columns = line.Split(';');
+                //Caso as dados das linhas acabem, encerro o loop
+                if (!line.Contains(";"))
+                    break;
 
                 nmCustomer = columns[0];
                 nmSocial = columns[1];
@@ -84,12 +104,19 @@ namespace Pisocola.com.dao
 
                 row.Add("NR_PHONE", nrPhone);
 
-                //Validando formatacao de numero de inscricao
                 bool nrInscIsValid = Util.ValidateNrInsc(nrInsc);
+                bool nrInscExists = CustomerDAO.GetInstance().VerifyNrInsc(nrInsc);
 
+                //Validando formatacao de numero de inscricao
                 if (!nrInscIsValid)
                 {
                     row.Add("NR_INSC_FORMAT_ERROR", errorList["NR_INSC_FORMAT_ERROR"]);
+                }
+
+                //Verificando se o Numero de Inscricao ja esta cadastrado
+                if (nrInscExists)
+                {
+                    row.Add("NR_INSC_EXISTS_ERROR", errorList["NR_INSC_EXISTS_ERROR"]);
                 }
 
                 row.Add("NR_INSC", nrInsc);
@@ -99,13 +126,16 @@ namespace Pisocola.com.dao
                 row.Add("NM_SOCIAL", nmSocial);
                 row.Add("DS_ADDRESS", dsAddress);
 
+                //Validacao de duplicidade no arquivo
+                VerifyFileDuplicity(rows, row, errorList);
+
                 rows.Add(row);
             }
 
             return rows;
         }
 
-        public static Dictionary<string, string> GetCustomerImportErrorList()
+        private static Dictionary<string, string> GetCustomerImportErrorList()
         {
             List<Object> errorList = ParameterDAO.GetInstance().GetParameterByTopic("CUSTOMER_IMPORT_ERROR");
             Dictionary<string, string> errors = new Dictionary<string, string>();
@@ -120,5 +150,20 @@ namespace Pisocola.com.dao
             return errors;
         }
 
+        private static void VerifyFileDuplicity(List<Dictionary<string, string>> rows, Dictionary<string, string> row, Dictionary<string, string> errorList)
+        {
+            foreach (Dictionary<string, string> item in rows)
+            {
+                if (row["NR_CPF_CNPJ"] == item["NR_CPF_CNPJ"])
+                {
+                    row.Add("FILE_DUPLIC_CPF_CNPJ_ERROR", errorList["FILE_DUPLIC_CPF_CNPJ_ERROR"] + " " + row["NR_CPF_CNPJ"]);
+                }
+
+                if (row["NR_INSC"] == item["NR_INSC"])
+                {
+                    row.Add("FILE_DUPLIC_NR_INSC_ERROR", errorList["FILE_DUPLIC_NR_INSC_ERROR"] + " " + row["NR_INSC"]);
+                }
+            }
+        }
     }
 }

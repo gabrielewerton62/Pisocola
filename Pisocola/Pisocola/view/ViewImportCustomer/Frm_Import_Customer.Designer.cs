@@ -44,6 +44,7 @@
             this.Field_Ds_Error = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.Btn_Import = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -63,9 +64,9 @@
             this.Field_Ds_Address,
             this.Field_Nr_Phone});
             this.Grid_Import_Lines.HideSelection = false;
-            this.Grid_Import_Lines.Location = new System.Drawing.Point(12, 46);
+            this.Grid_Import_Lines.Location = new System.Drawing.Point(12, 63);
             this.Grid_Import_Lines.Name = "Grid_Import_Lines";
-            this.Grid_Import_Lines.Size = new System.Drawing.Size(1300, 254);
+            this.Grid_Import_Lines.Size = new System.Drawing.Size(1300, 237);
             this.Grid_Import_Lines.TabIndex = 13;
             this.Grid_Import_Lines.UseCompatibleStateImageBehavior = false;
             this.Grid_Import_Lines.View = System.Windows.Forms.View.Details;
@@ -176,12 +177,25 @@
             this.Btn_Import.UseVisualStyleBackColor = false;
             this.Btn_Import.Click += new System.EventHandler(this.Btn_Import_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(9, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(457, 17);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Utilizar separador ponto e vírgula (;) para realizar a importação de CSV";
+            // 
             // Frm_Import_Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
             this.ClientSize = new System.Drawing.Size(1324, 561);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.Btn_Import);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Grid_Invalid_Lines);
@@ -213,5 +227,6 @@
         private System.Windows.Forms.ColumnHeader Field_Nr_Line_Error;
         private System.Windows.Forms.ColumnHeader Field_Ds_Error;
         private System.Windows.Forms.Button Btn_Import;
+        private System.Windows.Forms.Label label2;
     }
 }

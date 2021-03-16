@@ -30,6 +30,16 @@ namespace Pisocola
 
         private void Btn_Select_File_Click(object sender, EventArgs e)
         {
+            PreviewImport();
+        }
+
+        private void Btn_Import_Click(object sender, EventArgs e)
+        {
+            ImportCustomers();
+        }
+
+        private void PreviewImport()
+        {
             validToImport = true;
 
             OpenFileDialog ofd = new OpenFileDialog();
@@ -44,9 +54,6 @@ namespace Pisocola
                     currentPath = @ofd.FileName;
                     importFolderPath = path.GetVlValue() + ofd.SafeFileName;
 
-                    Console.WriteLine("CAMINHO ATUAL: " + currentPath);
-                    Console.WriteLine("CAMINHO DESTINO: " + importFolderPath);
-
                     string[] lines = System.IO.File.ReadAllLines(currentPath);
 
                     List<Dictionary<string, string>> data = ImportCustomerDAO.PreviewImportCustomer(lines);
@@ -59,7 +66,7 @@ namespace Pisocola
             }
         }
 
-        private void Btn_Import_Click(object sender, EventArgs e)
+        private void ImportCustomers()
         {
             if(validToImport)
             {
@@ -97,10 +104,11 @@ namespace Pisocola
             int nrLine = 1;
             string[] row = new string[7];
             string[] errorRow = new string[2];
+            bool structureError = list.Count == 1;
 
-            bool columnsError = list[0].ContainsKey("NUMBER_OF_COLUMNS_ERROR");
+            Dictionary<string, string> error = list[0];
 
-            if (!columnsError)
+            if (!structureError)
             {
                 Btn_Import.Visible = true;
 
@@ -145,20 +153,14 @@ namespace Pisocola
                     nrLine++;
                 }
 
-                foreach (ColumnHeader column in Grid_Import_Lines.Columns)
-                {
-                    column.Width = -2;
-                }
-
-                foreach (ColumnHeader column in Grid_Invalid_Lines.Columns)
-                {
-                    column.Width = -2;
-                }
+                ResizeColumns(Grid_Import_Lines);
+                ResizeColumns(Grid_Invalid_Lines);
+                
             }
             else
             {
                 Btn_Import.Visible = false;
-                MessageBox.Show("O arquivo não contém o número de colunas necessário.", "Atenção!");
+                MessageBox.Show(error["STRUCTURE_ERROR"], "Atenção!");
             }
         }
 
@@ -171,6 +173,14 @@ namespace Pisocola
             Grid_Invalid_Lines.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             Grid_Invalid_Lines.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             Grid_Invalid_Lines.Items.Clear();
+        }
+
+        private void ResizeColumns(ListView listView)
+        {
+            foreach (ColumnHeader column in listView.Columns)
+            {
+                column.Width = -2;
+            }
         }
     }
 }

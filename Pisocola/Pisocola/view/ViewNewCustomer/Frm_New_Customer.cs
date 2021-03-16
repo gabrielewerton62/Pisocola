@@ -28,12 +28,18 @@ namespace Pisocola
             InitView();
         }
 
-        private bool editMode = false;
         private List<string> emptyfieldsList = null;
         private Dictionary<string, string> customerFields = null;
 
+        private bool editMode = false;
+        private bool isNrCpfCnpjValid = true;
+        private bool isNrInscValid = true;
+
         private void InitView()
         {
+            Lbl_Valid_Cpf_Cnpj.Visible = false;
+            Lbl_Valid_Nr_Insc.Visible = false;
+
             if (customerFields != null) //Caso a tela esteja em modo de edicao
             {
                 Btn_Save_Customer.Text = "Atualizar";
@@ -75,7 +81,7 @@ namespace Pisocola
                 c.SetNrInsc(Inpt_Nr_Insc.Text);
                 c.SetNrPhone(Inpt_Nr_Phone.Text);
 
-                if(editMode)
+                if (editMode)
                 {
                     c.SetIdCustomer(Convert.ToInt32(customerFields["ID_CUSTOMER"]));
                     CustomerDAO.GetInstance().UpdateCustomer(c);
@@ -83,18 +89,11 @@ namespace Pisocola
                 }
                 else
                 {
-                    bool cpfCnpjExists = CustomerDAO.GetInstance().VerifyCpfCnpj(c.GetNrCpfCnpj());
-
-                    if (cpfCnpjExists)
-                    {
-                        MessageBox.Show("O CPF/CNPJ já está cadastrado!", "Atenção!");
-                    }
-                    else
-                    {
-                        CustomerDAO.GetInstance().InsertCustomer(c);
-                        MessageBox.Show("Cliente cadastrado com sucesso!", "Concluído");
-                    }
+                    CustomerDAO.GetInstance().InsertCustomer(c);
+                    MessageBox.Show("Cliente cadastrado com sucesso!", "Concluído");
                 }
+                
+                //MessageBox.Show("O CPF/CNPJ já está cadastrado!", "Atenção!");
             }
             else
             {
@@ -105,7 +104,11 @@ namespace Pisocola
                     emptyFields += item + "\n";
                 }
 
-                MessageBox.Show("Alguns campos obrigatórios não foram preenchidos, são eles:\n\n" + emptyFields, "Atenção");
+                if(isNrInscValid || isNrCpfCnpjValid)
+                    MessageBox.Show("Alguns valores de campos já foram cadastrados.", "Atenção");
+                else
+                    MessageBox.Show("Alguns campos obrigatórios não foram preenchidos, são eles:\n\n" + emptyFields, "Atenção");
+
                 emptyfieldsList = null;
             }
         }
@@ -115,7 +118,13 @@ namespace Pisocola
             bool isValid = true;
             emptyfieldsList = new List<string>();
 
-            if(Inpt_Nm_Customer.Text == "")
+            if (isNrInscValid)
+                isValid = false;
+
+            if (isNrCpfCnpjValid)
+                isValid = false;
+
+            if (Inpt_Nm_Customer.Text == "")
             {
                 isValid = false;
                 emptyfieldsList.Add("Nome Fantasia");
@@ -201,6 +210,31 @@ namespace Pisocola
         private void Btn_Save_Customer_Click(object sender, EventArgs e)
         {
             SaveCustomer();
+        }
+
+        private void Inpt_Cpf_Cnpj_KeyUp(object sender, KeyEventArgs e)
+        {
+            isNrCpfCnpjValid = CustomerDAO.GetInstance().VerifyCpfCnpj(Inpt_Cpf_Cnpj.Text);
+
+            if (isNrCpfCnpjValid)
+                Lbl_Valid_Cpf_Cnpj.Visible = true;
+            else
+                Lbl_Valid_Cpf_Cnpj.Visible = false;
+        }
+
+        private void Inpt_Nr_Insc_KeyUp(object sender, KeyEventArgs e)
+        {
+            isNrInscValid = CustomerDAO.GetInstance().VerifyNrInsc(Inpt_Nr_Insc.Text); isNrInscValid = CustomerDAO.GetInstance().VerifyNrInsc(Inpt_Nr_Insc.Text);
+
+            if (isNrInscValid)
+                Lbl_Valid_Nr_Insc.Visible = true;
+            else
+                Lbl_Valid_Nr_Insc.Visible = false;
+
+            if (isNrInscValid)
+                Lbl_Valid_Nr_Insc.Visible = true;
+            else
+                Lbl_Valid_Nr_Insc.Visible = false;
         }
     }
 }

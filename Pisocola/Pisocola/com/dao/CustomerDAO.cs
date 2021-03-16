@@ -52,6 +52,16 @@ namespace Pisocola.com.dao
                 return false;
         }
 
+        public bool VerifyNrInsc(string nrInsc)
+        {
+            Customer c = (Customer) GetItem("SELECT * FROM " + tableName + " WHERE 1=1 AND NR_INSC = '" + nrInsc + "'");
+
+            if (c != null)
+                return true;
+            else
+                return false;
+        }
+
         public Customer InsertCustomer (Customer customer)
         {
             int id = instertItem("INSERT INTO " + tableName + " (NM_CUSTOMER, NM_SOCIAL, NR_CPF_CNPJ, NR_INSC, DS_ADDRESS, NR_PHONE, DT_INSERT) VALUES (@, @, @, @, @, @, SYSDATE())",
