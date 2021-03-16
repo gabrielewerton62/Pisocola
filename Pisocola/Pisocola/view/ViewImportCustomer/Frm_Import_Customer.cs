@@ -104,7 +104,7 @@ namespace Pisocola
             int nrLine = 1;
             string[] row = new string[7];
             string[] errorRow = new string[2];
-            bool structureError = list.Count == 1;
+            bool structureError = list[0].ContainsKey("STRUCTURE_ERROR");
 
             Dictionary<string, string> error = list[0];
 
