@@ -152,7 +152,7 @@ namespace Pisocola
             }
             else
             {
-                if (Inpt_Cpf_Cnpj.Text == "   .   .   /    -")
+                if (Inpt_Cpf_Cnpj.Text == "  .   .   /    -")
                 {
                     isValid = false;
                     emptyfieldsList.Add("CPF/CNPJ");
@@ -193,7 +193,7 @@ namespace Pisocola
             }
             else
             {
-                Inpt_Cpf_Cnpj.Mask = @"000,000,000/0000-00";
+                Inpt_Cpf_Cnpj.Mask = @"00,000,000/0000-00";
             }
         }
 
