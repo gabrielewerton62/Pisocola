@@ -69,6 +69,7 @@ namespace Pisocola
             }
             catch(System.IO.IOException e)
             {
+                Console.WriteLine("StackTrace: " + e.StackTrace);
                 MessageBox.Show("O arquivo está sendo utilizado por outro programa.", "Atenção!");
             }
             
