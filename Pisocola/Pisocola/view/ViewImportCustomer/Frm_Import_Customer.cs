@@ -45,25 +45,33 @@ namespace Pisocola
             OpenFileDialog ofd = new OpenFileDialog();
             Parameter path = ParameterDAO.GetInstance().GetParameterByTopicAndName("CUSTOMER_IMPORT", "IMPORT_PATH");
 
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                string extension = System.IO.Path.GetExtension(@ofd.FileName);
-
-                if (extension == ".csv")
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    currentPath = @ofd.FileName;
-                    importFolderPath = path.GetVlValue() + ofd.SafeFileName;
+                    string extension = System.IO.Path.GetExtension(@ofd.FileName);
 
-                    string[] lines = System.IO.File.ReadAllLines(currentPath);
+                    if (extension == ".csv")
+                    {
+                        currentPath = @ofd.FileName;
+                        importFolderPath = path.GetVlValue() + ofd.SafeFileName;
 
-                    List<Dictionary<string, string>> data = ImportCustomerDAO.PreviewImportCustomer(lines);
-                    LoadListViews(data);
-                }
-                else
-                {
-                    MessageBox.Show("O arquivo deve ser CSV.", "Atenção!");
+                        string[] lines = System.IO.File.ReadAllLines(currentPath);
+
+                        List<Dictionary<string, string>> data = ImportCustomerDAO.PreviewImportCustomer(lines);
+                        LoadListViews(data);
+                    }
+                    else
+                    {
+                        MessageBox.Show("O arquivo deve ser CSV.", "Atenção!");
+                    }
                 }
             }
+            catch(System.IO.IOException e)
+            {
+                MessageBox.Show("O arquivo está sendo utilizado por outro programa.", "Atenção!");
+            }
+            
         }
 
         private void ImportCustomers()

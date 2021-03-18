@@ -69,7 +69,7 @@ namespace Pisocola
             }
             else
             {
-                if (Inpt_Cpf_Cnpj.Text != "   .   .   /    -")
+                if (Inpt_Cpf_Cnpj.Text != "  .   .   /    -")
                     where += "AND NR_CPF_CNPJ = '" + Inpt_Cpf_Cnpj.Text + "' ";
             }
 
@@ -132,7 +132,7 @@ namespace Pisocola
             }
             else
             {
-                Inpt_Cpf_Cnpj.Mask = @"000,000,000/0000-00";
+                Inpt_Cpf_Cnpj.Mask = @"00,000,000/0000-00";
             }
         }
 
