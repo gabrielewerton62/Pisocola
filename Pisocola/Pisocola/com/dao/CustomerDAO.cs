@@ -79,7 +79,7 @@ namespace Pisocola.com.dao
 
         public Customer UpdateCustomer(Customer customer)
         {
-            return (Customer) UpdateItem("UPDATE " + tableName + " SET NM_CUSTOMER = @,  NM_SOCIAL = @, NR_CPF_CNPJ = @, NR_INSC = @, DS_ADDRESS = @, NR_PHONE = @, DT_INSERT = SYSDATE() WHERE ID_CUSTOMER = @",
+            return (Customer) UpdateItem("UPDATE " + tableName + " SET NM_CUSTOMER = @,  NM_SOCIAL = @, NR_CPF_CNPJ = @, NR_INSC = @, DS_ADDRESS = @, NR_PHONE = @ WHERE ID_CUSTOMER = @",
                         new Object[] {
                             customer.GetNmCustomer(),
                             customer.GetNmSocial(),
@@ -120,6 +120,7 @@ namespace Pisocola.com.dao
             customer.SetDsAddress((string) data["DS_ADDRESS"]);
             customer.SetNrPhone((string) data["NR_PHONE"]);
             customer.SetDtInsert((DateTime) data["DT_INSERT"]);
+            customer.SetDtLastSell((DateTime) data["DT_LAST_SELL"]);
 
             return customer;
         }

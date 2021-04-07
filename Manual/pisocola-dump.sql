@@ -31,8 +31,9 @@ CREATE TABLE `customer` (
   `DS_ADDRESS` varchar(100) NOT NULL,
   `NR_PHONE` varchar(100) DEFAULT NULL,
   `DT_INSERT` datetime DEFAULT NULL,
+  `DT_LAST_SELL` datetime DEFAULT NULL,
   PRIMARY KEY (`ID_CUSTOMER`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +42,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'GABRIEL EWERTON DA SILVA RANGEL','PISOCOLA','255.147.444-18','1244711-23','RUA HENRIQUE SANTIAGO','94852-3744','2021-03-15 19:38:04'),(2,'GABRIEL','PISOCOLA','000.000.000-00','9999999-99','RUA DOS SANTOS','98845-3544','2021-03-16 12:15:32'),(3,'JOAO','PISOCOLA','000.000.000-00','9999999-99','RUA DAS LAGOAS','98588-3751','2021-03-16 12:15:32'),(4,'GABRIEL','PISOCOLA','000.100.000-00','9999999-97','RUA DOS SANTOS','98845-3544','2021-03-16 17:33:59'),(5,'JOAO','PISOCOLA','000.000.004-00','9999999-99','RUA DAS LAGOAS','98588-3751','2021-03-16 17:33:59'),(6,'GABRIEL','PISOCOLA','000.100.000-04','9999999-95','RUA DOS SANTOS','98845-3544','2021-03-16 17:42:07'),(7,'JOAO','PISOCOLA','000.000.004-05','9995999-99','RUA DAS LAGOAS','98588-3751','2021-03-16 17:42:07');
+INSERT INTO `customer` VALUES (10,'JOAO','PISOCOLA','000.000.000-00','0000000-00','RUA DAS LAGOAS','98588-3751','2019-03-18 17:08:11','2019-03-18 17:08:11'),(12,'JOAO','PISOCOLA','000.000.000-00','0000000-00','RUA DAS LAGOAS','98588-3751','2020-04-05 17:08:11','2020-04-05 17:08:11'),(15,'JOAO','PISOCOLA','000.000.004-05','9999999-95','RUA DAS LAGOAS','98588-3751','2021-04-07 17:08:11','2021-04-07 17:08:11'),(50,'JOAO','PISOCOLA','000.000.000-00','0000000-00','RUA DAS LAGOAS','98588-3751','2018-04-05 17:08:11','2018-04-05 17:08:11');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,6 +76,29 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'pisocola'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `verify_entities` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `verify_entities`()
+BEGIN
+		-- Data estabelecida para todas as entidades
+		declare vLimitDate DATE;
+		set vLimitDate = date_format(date_sub(sysdate(), interval 12 month), '%Y-%m-%d');
+		
+		update customer set NR_CPF_CNPJ = '000.000.000-00', NR_INSC = '0000000-00' where STR_TO_DATE(date_format(dt_last_sell, '%Y-%m-%d'), '%Y-%m-%d') <= vLimitDate;
+	END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -85,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-16 17:43:54
+-- Dump completed on 2021-04-07  3:36:26

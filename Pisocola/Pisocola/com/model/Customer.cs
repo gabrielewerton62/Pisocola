@@ -17,7 +17,8 @@ namespace Pisocola.com.model
         private string dsAddress;
         private string nrPhone;
         private DateTime dtInsert;
-        
+        private DateTime dtLastSell;
+
         public int GetIdCustomer()
         {
             return idCustomer;
@@ -96,6 +97,16 @@ namespace Pisocola.com.model
         public void SetDtInsert(DateTime dtInsert)
         {
             this.dtInsert = dtInsert;
+        }
+
+        public DateTime GetDtLastSell()
+        {
+            return dtLastSell;
+        }
+
+        public void SetDtLastSell(DateTime dtLastSell)
+        {
+            this.dtLastSell = dtLastSell;
         }
 
     }
